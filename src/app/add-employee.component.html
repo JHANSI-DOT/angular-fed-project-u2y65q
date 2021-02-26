@@ -1,0 +1,46 @@
+<h3>Add Employee</h3>
+<div class="container">
+	<form #addEmp="ngForm" (ngSubmit)="onSubmit(addEmp.value)">
+		<div class="form-group">
+			<label for="name">Employee Name:</label>
+			<input type="text" required #refName="ngModel" minlength="3" maxlength="30" name="name" pattern="[a-zA-Z ]*$" id="name" class="form-control" [(ngModel)]="name"/>
+			<div *ngIf="refName.errors && (refName.dirty||refName.touched)" class="alert alert-danger">
+				<div [hidden]="!refName.errors.required">
+					Please enter a name
+				</div>
+				<div [hidden]="!refName.errors.minlength">
+					name must be 3 or more characters.
+				</div>
+				<div [hidden]="!refMob.errors.pattern">
+					Please enter only alphabets.
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="email" required email maxlength="30" #refMail="ngModel" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" [(ngModel)]="email"/>
+			<div *ngIf="refMail.errors && (refMail.dirty||refMail.touched)" class="alert alert-danger">
+				<div [hidden]="!refMail.errors.required">
+					Please enter email
+				</div>
+				<div [hidden]="!refMail.errors.email">
+					Please enter a valid email.
+				</div>
+				<div [hidden]="!refMob.errors.pattern">
+					Please enter valid email
+				</div>
+			</div>
+		</div>
+
+
+		<input #Image type="file" (change)="handleFileInput($event.target.files)"/>
+		<img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
+
+		<button [disabled]="!addEmp.form.valid" type="submit" id="add" class="btn btn-primary">Submit</button>
+	</form>
+</div>

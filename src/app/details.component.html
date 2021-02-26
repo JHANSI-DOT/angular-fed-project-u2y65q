@@ -1,0 +1,12 @@
+<h2>Employee Details</h2>
+<img [alt]="employee.name" [src]="employee.image" />
+<br>
+<label id="id">Id:{{id}}</label>
+<br/>
+<label id="id">Name:<span>{{employee.name}}</span></label><br/>
+<img  id ="image">image:
+<label id="email">Email:{{employee.email}}</label><br/>
+
+<button id="back" class="btn btn-primary" (click)="go_back()">Back</button> &nbsp;
+<a [routerLink]="['/editEmployee',employee.id]" class="btn btn-secondary">Edit</a> &nbsp;
+<a [routerLink]="['/deleteEmployee',employee.id]" class="btn btn-danger">Delete</a>

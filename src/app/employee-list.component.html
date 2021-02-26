@@ -1,0 +1,16 @@
+<h3>Employee List</h3>
+
+<tbody>
+	<tr
+		*ngFor="let employee of employees | searchByName:searchText | paginate: {itemsPerPage: 2, currentPage: p }; index as i; last as last">
+		<img [alt]="employee.name" [src]="employee.image" />
+		<figcaption>
+			<a [routerLink]="['/details',employee.id]">{{employee.id}}</a> &nbsp;
+			<a [attr.id]="'name'+(i+1)">{{employee.name | uppercase }}</a>
+		</figcaption>
+
+
+</tbody>
+
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
